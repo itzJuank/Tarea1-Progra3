@@ -8,14 +8,7 @@ public class Main {
         imprimir("Buscar TOR-8", lista.buscar("TOR-8"));
         imprimir("Buscar PVC-050", lista.buscar("PVC-050"));
         imprimir("Linea mayor", lista.getLineaMayor());
-        imprimir("Consolidar", lista.consolidar());
-        imprimir("Cantidad tras consolidar", lista.getCantidad());
-        imprimir("Subtotal tras consolidar", lista.getSubtotal());
-        imprimir("PVC-050 tras consolidar", lista.buscar("PVC-050"));
-        imprimir("Contenido tras consolidar", lista.verContenido());
-        lista.invertir();
-        imprimir("Contenido tras invertir", lista.verContenido());
-        imprimir("Subtotal tras invertir", lista.getSubtotal());
+        imprimir("Contenido", lista.verContenido());
     }
 
     private static ListaLineas crearListaDePrueba() {

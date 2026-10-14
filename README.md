@@ -9,20 +9,18 @@ El programa maneja una lista de lineas de detalle para una factura de ferreteria
 La clase principal es `ListaLineas`, que implementa operaciones basicas de lista enlazada:
 
 - Agregar una linea al final.
-- Insertar una linea en cualquier posicion.
-- Eliminar una linea.
 - Buscar una linea por codigo de producto.
 - Obtener la linea con mayor importe.
-- Consolidar productos repetidos.
-- Invertir el orden de la lista.
+- Contar las lineas recorriendo los nodos.
+- Calcular el subtotal recorriendo la lista.
+- Mostrar el contenido de la lista.
 
 ## Archivos
 
 - `Producto.java`: representa un producto con codigo, descripcion y precio unitario.
 - `LineaDetalle.java`: representa una linea de factura con producto y cantidad.
-- `ListaLineas.java`: implementa la lista enlazada y sus operaciones.
-- `Main.java`: contiene los datos de prueba y ejecuta las verificaciones.
-- `Explicacion_Codigo.docx`: documento explicativo del funcionamiento del codigo.
+- `ListaLineas.java`: implementa una lista enlazada simple con nodos y referencias.
+- `Main.java`: contiene los datos de prueba y ejecuta las verificaciones basicas.
 
 ## Como ejecutar
 
@@ -35,4 +33,4 @@ java Main
 
 ## Resultado esperado
 
-El programa debe mostrar que el subtotal inicial es `51000`, que `consolidar()` elimina una linea repetida y que el subtotal se mantiene igual despues de consolidar e invertir la lista.
+El programa debe mostrar que el subtotal inicial es `51000`, que la lista tiene `5` lineas, que puede buscar productos por codigo y que puede recorrer la cadena completa hasta llegar a `null`.

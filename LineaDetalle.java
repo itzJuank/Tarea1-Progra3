@@ -15,10 +15,6 @@ public class LineaDetalle {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public int getImporte() {
         return producto.getPrecioUnitario() * cantidad;
     }
