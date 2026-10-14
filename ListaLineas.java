@@ -1,6 +1,5 @@
 public class ListaLineas {
     private Nodo primero;
-    private int cantidad;
 
     private static class Nodo {
         private LineaDetalle dato;
@@ -23,48 +22,6 @@ public class ListaLineas {
             }
             actual.siguiente = nuevo;
         }
-
-        cantidad++;
-    }
-
-    public void insertar(LineaDetalle linea, int posicion) {
-        if (posicion < 0 || posicion > cantidad) {
-            throw new IndexOutOfBoundsException("Posicion invalida: " + posicion);
-        }
-
-        Nodo nuevo = new Nodo(linea);
-
-        if (posicion == 0) {
-            nuevo.siguiente = primero;
-            primero = nuevo;
-        } else {
-            Nodo anterior = obtenerNodo(posicion - 1);
-            nuevo.siguiente = anterior.siguiente;
-            anterior.siguiente = nuevo;
-        }
-
-        cantidad++;
-    }
-
-    public LineaDetalle eliminar(int posicion) {
-        if (posicion < 0 || posicion >= cantidad) {
-            throw new IndexOutOfBoundsException("Posicion invalida: " + posicion);
-        }
-
-        Nodo eliminado;
-
-        if (posicion == 0) {
-            eliminado = primero;
-            primero = primero.siguiente;
-        } else {
-            Nodo anterior = obtenerNodo(posicion - 1);
-            eliminado = anterior.siguiente;
-            anterior.siguiente = eliminado.siguiente;
-        }
-
-        cantidad--;
-        eliminado.siguiente = null;
-        return eliminado.dato;
     }
 
     public LineaDetalle buscar(String codigo) {
@@ -98,53 +55,16 @@ public class ListaLineas {
         return mayor;
     }
 
-    public int consolidar() {
-        int eliminadas = 0;
+    public int getCantidad() {
+        int contador = 0;
         Nodo actual = primero;
 
         while (actual != null) {
-            Nodo anterior = actual;
-            Nodo comparado = actual.siguiente;
-
-            while (comparado != null) {
-                String codigoActual = actual.dato.getProducto().getCodigo();
-                String codigoComparado = comparado.dato.getProducto().getCodigo();
-
-                if (codigoActual.equals(codigoComparado)) {
-                    int nuevaCantidad = actual.dato.getCantidad() + comparado.dato.getCantidad();
-                    actual.dato.setCantidad(nuevaCantidad);
-                    anterior.siguiente = comparado.siguiente;
-                    comparado = anterior.siguiente;
-                    cantidad--;
-                    eliminadas++;
-                } else {
-                    anterior = comparado;
-                    comparado = comparado.siguiente;
-                }
-            }
-
+            contador++;
             actual = actual.siguiente;
         }
 
-        return eliminadas;
-    }
-
-    public void invertir() {
-        Nodo anterior = null;
-        Nodo actual = primero;
-
-        while (actual != null) {
-            Nodo siguiente = actual.siguiente;
-            actual.siguiente = anterior;
-            anterior = actual;
-            actual = siguiente;
-        }
-
-        primero = anterior;
-    }
-
-    public int getCantidad() {
-        return cantidad;
+        return contador;
     }
 
     public int getSubtotal() {
@@ -170,15 +90,5 @@ public class ListaLineas {
 
         resultado.append("null");
         return resultado.toString();
-    }
-
-    private Nodo obtenerNodo(int posicion) {
-        Nodo actual = primero;
-
-        for (int i = 0; i < posicion; i++) {
-            actual = actual.siguiente;
-        }
-
-        return actual;
     }
 }
